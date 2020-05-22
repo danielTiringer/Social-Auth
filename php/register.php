@@ -5,7 +5,7 @@
 		$firstName = $connection->real_escape_string($_POST['firstName']);
 		$lastName = $connection->real_escape_string($_POST['lastName']);
 		$email = $connection->real_escape_string($_POST['email']);
-		$password = $connection->real_escape_string($_POST['password']);
+		$password = sha1($connection->real_escape_string($_POST['password']));
 
 		$data = $connection->query("INSERT INTO users (firstName, lastName, email, password) VALUES ('$firstName', '$lastName', '$email', '$password')");
 
