@@ -70,6 +70,17 @@ services:
     networks:
       - social-auth
 
+  mailcatcher:
+    container_name: social-mailcatcher
+    build:
+      context: ./Docker/Mailcatcher
+      dockerfile: Dockerfile
+    ports:
+      - '1025:1025'
+      - '1080:1080'
+    networks:
+      - social-auth
+
 networks:
   social-auth:
 
