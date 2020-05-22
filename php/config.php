@@ -13,3 +13,10 @@
 	]);
 
 	$helper = $FB->getRedirectLoginHelper();
+
+	$gClient = new Google_Client();
+	$gClient->setClientId($_ENV['GOOGLE_CLIENT_ID']);
+	$gClient->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
+	$gClient->setApplicationName('Social Login');
+	$gClient->setRedirectUri('http://localhost/g-callback.php');
+	$gClient->addScope('https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email');

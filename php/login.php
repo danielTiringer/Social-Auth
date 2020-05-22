@@ -8,10 +8,15 @@
 		exit();
 	}
 
-	$redirectURL = 'http://localhost/fb-callback.php';
+	// Facebook login details
+	$fbRedirectURL = 'http://localhost/fb-callback.php';
 	$permissions = ['email'];
-	$loginURL = $helper->getLoginURL($redirectURL, $permissions);
+	$fbLoginURL = $helper->getLoginURL($fbRedirectURL, $permissions);
 
+	// Google login details
+	$googleLoginURL = $gClient->createAuthUrl();
+
+	// Regular login form
 	if (isset($_POST['logIn'])) {
 		$connection = new mysqli('mysql', 'root', 'password', 'phpAuth');
 
@@ -41,6 +46,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Log In</title>
 		<link rel="shortcut icon" type="image/png" href="assets/php-icon.ico"/>
 		<link
@@ -67,10 +73,10 @@
 						<input type="text" name="email" placeholder="Email" class="form-control"><br>
 						<input type="password" name="password" placeholder="Password" type="password" class="form-control"><br>
 						<input type="submit" name="logIn" value="Sign In" class="btn btn-primary">
-						<a class="btn btn-social btn-facebook" onclick="window.location='<?php echo $loginURL ?>';">
+						<a class="btn btn-social btn-facebook text-white" onclick="window.location='<?php echo $fbLoginURL ?>';">
 							<span class="fa fa-facebook"></span> Sign in with Facebook
 						</a>
-						<a class="btn btn-social btn-google" onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-google']);">
+						<a class="btn btn-social btn-google text-white" onclick="window.location='<?php echo $googleLoginURL ?>';">
 							<span class="fa fa-google"></span> Sign in with Google
 						</a>
 					</form>
