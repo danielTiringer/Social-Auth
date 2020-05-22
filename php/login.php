@@ -16,6 +16,9 @@
 	// Google login details
 	$googleLoginURL = $gClient->createAuthUrl();
 
+	// Github login details
+	$githubLoginURL = 'https://github.com/login/oauth/authorize?client_id=' . $_ENV['GITHUB_CLIENT_ID'];
+
 	// Regular login form
 	if (isset($_POST['logIn'])) {
 		$connection = new mysqli('mysql', 'root', 'password', 'phpAuth');
@@ -80,6 +83,9 @@
 							</a>
 							<a class="btn btn-social btn-google text-white mt-2" onclick="window.location='<?php echo $googleLoginURL ?>';">
 								<span class="fa fa-google"></span> Sign in with Google
+							</a>
+							<a class="btn btn-social btn-github text-white mt-2" onclick="window.location='<?php echo $githubLoginURL ?>';">
+								<span class="fa fa-github"></span> Sign in with Github
 							</a>
 						<div>
 					</form>
