@@ -6,10 +6,7 @@
 		exit();
 	}
 
-	/* unset($_SESSION['access_token']); */
-	/* session_destroy(); */
-	/* header('Location: login.php'); */
-	/* exit(); */
+	$logoutURL = 'http://localhost/logout.php';
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +51,9 @@
 					</table>
 				</div>
 			</div>
+
+			<button onclick="window.location='<?php echo $logoutURL ?>';" class="btn btn-primary">Log Out</button>
+
 		</div>
 	</body>
 </html>
