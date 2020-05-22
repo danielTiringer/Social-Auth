@@ -22,7 +22,15 @@
 		<div class="container" style="margin-top: 100px">
 			<div class="row justify-content-center">
 				<div class="col-md-3">
-				<img src="<?php echo $_SESSION['picture'] ?>" width="200px" height="200px">
+				<?php if ($_SESSION['picture']) : ?>
+					<img src="<?php echo $_SESSION['picture'] ?>" width="200px" height="200px">
+				<?php else : ?>
+					<img
+						src="https://www.xyrius.co.uk/wp-content/uploads/2017/06/Placeholder-Profile-Image-1.jpg"
+						width="200px"
+						height="200px"
+					>
+				<?php endif; ?>
 				</div>
 				<div class="col-md-9">
 					<table class="table table-hover table-bordered">
