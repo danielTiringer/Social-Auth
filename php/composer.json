@@ -1,5 +1,8 @@
 {
     "require-dev": {
         "vlucas/phpdotenv": "^4.1"
+    },
+    "require": {
+        "facebook/graph-sdk": "5.5"
     }
 }
