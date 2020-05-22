@@ -22,7 +22,7 @@
 		<div class="container" style="margin-top: 100px">
 			<div class="row justify-content-center">
 				<div class="col-md-3">
-				<img src="<?php echo $_SESSION['picture'] ?>">
+				<img src="<?php echo $_SESSION['picture'] ?>" width="200px" height="200px">
 				</div>
 				<div class="col-md-9">
 					<table class="table table-hover table-bordered">
