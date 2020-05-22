@@ -28,8 +28,8 @@
 		$result = mysqli_fetch_array($data);
 
 		if ($data->num_rows > 0) {
-			$_SESSION['email'] = $email;
 			$_SESSION['id'] = $result['id'];
+			$_SESSION['email'] = $email;
 			$_SESSION['first_name'] = $result['firstName'];
 			$_SESSION['last_name'] = $result['lastName'];
 			$_SESSION['loggedIn'] = 1;
