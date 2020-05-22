@@ -72,13 +72,19 @@
 					<form action="login.php" method="POST">
 						<input type="text" name="email" placeholder="Email" class="form-control"><br>
 						<input type="password" name="password" placeholder="Password" type="password" class="form-control"><br>
-						<input type="submit" name="logIn" value="Sign In" class="btn btn-primary">
-						<a class="btn btn-social btn-facebook text-white" onclick="window.location='<?php echo $fbLoginURL ?>';">
-							<span class="fa fa-facebook"></span> Sign in with Facebook
-						</a>
-						<a class="btn btn-social btn-google text-white" onclick="window.location='<?php echo $googleLoginURL ?>';">
-							<span class="fa fa-google"></span> Sign in with Google
-						</a>
+
+						<div class="d-inline-flex flex-column">
+							<input type="submit" name="logIn" value="Sign In" class="btn btn-primary">
+							<a class="btn btn-social btn-facebook text-white mt-2" onclick="window.location='<?php echo $fbLoginURL ?>';">
+								<span class="fa fa-facebook"></span> Sign in with Facebook
+							</a>
+							<a class="btn btn-social btn-google text-white mt-2" onclick="window.location='<?php echo $googleLoginURL ?>';">
+								<span class="fa fa-google"></span> Sign in with Google
+							</a>
+							<a class="btn btn-social btn-instagram text-white mt-2" onclick="window.location='<?php echo $googleLoginURL ?>';">
+								<span class="fa fa-instagram"></span> Sign in with Instagram
+							</a>
+						<div>
 					</form>
 				</div>
 			</div>
