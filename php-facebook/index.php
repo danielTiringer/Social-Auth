@@ -14,6 +14,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Log In</title>
+		<link rel="shortcut icon" type="image/png" href="assets/php-icon.ico"/>
 		<link
 			rel="stylesheet"
 			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
