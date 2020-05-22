@@ -1,9 +1,10 @@
 <?php
-	$firstName = $_POST['firstName'];
-	$lastName = $_POST['lastName'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-
+	if (isset($_POST['register'])) {
+		$firstName = $_POST['firstName'];
+		$lastName = $_POST['lastName'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+	}
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +31,7 @@
 						<input type="text" name="lastName" placeholder="Last Name" class="form-control" /><br>
 						<input type="text" name="email" placeholder="Email" class="form-control" /><br>
 						<input type="password" name="password" placeholder="Password" type="password" class="form-control" /><br>
-						<input type="submit" value="Register" class="btn btn-primary" />
+						<input type="submit" name="register" value="Register" class="btn btn-primary" />
 					</form>
 				</div>
 			</div>
