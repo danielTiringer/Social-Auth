@@ -17,7 +17,8 @@
 	$googleLoginURL = $gClient->createAuthUrl();
 
 	// Github login details
-	$githubLoginURL = 'https://github.com/login/oauth/authorize?client_id=' . $_ENV['GITHUB_CLIENT_ID'];
+	$scopes = 'read:user';
+	$githubLoginURL = 'https://github.com/login/oauth/authorize?client_id=' . $_ENV['GITHUB_CLIENT_ID'] . '&scope=' . $scopes;
 
 	// Regular login form
 	if (isset($_POST['logIn'])) {
