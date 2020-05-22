@@ -81,9 +81,6 @@
 							<a class="btn btn-social btn-google text-white mt-2" onclick="window.location='<?php echo $googleLoginURL ?>';">
 								<span class="fa fa-google"></span> Sign in with Google
 							</a>
-							<a class="btn btn-social btn-instagram text-white mt-2" onclick="window.location='<?php echo $googleLoginURL ?>';">
-								<span class="fa fa-instagram"></span> Sign in with Instagram
-							</a>
 						<div>
 					</form>
 				</div>
