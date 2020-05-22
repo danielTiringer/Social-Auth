@@ -1,8 +1,8 @@
 <?php
 	session_start();
 
-	if (!isset($_SESSION['loggedIn']) && !isset($_SESSION['access_token'])) {
-		header('Location: login.php');
-		exit();
-	}
+	/* if (!isset($_SESSION['loggedIn']) && !isset($_SESSION['access_token'])) { */
+	/* 	header('Location: login.php'); */
+	/* 	exit(); */
+	/* } */
 ?>

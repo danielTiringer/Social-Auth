@@ -66,7 +66,6 @@
 		>
 		<script src="https://kit.fontawesome.com/cd68a50978.js" crossorigin="anonymous"></script>
   </head>
-	</head>
 
 	<body>
 		<div class="container" style="margin-top: 100px">
