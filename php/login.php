@@ -49,6 +49,13 @@
 			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 			crossorigin="anonymous"
 		>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css"
+			crossorigin="anonymous"
+		>
+		<script src="https://kit.fontawesome.com/cd68a50978.js" crossorigin="anonymous"></script>
+  </head>
 	</head>
 
 	<body>
@@ -59,13 +66,13 @@
 					<form action="login.php" method="POST">
 						<input type="text" name="email" placeholder="Email" class="form-control"><br>
 						<input type="password" name="password" placeholder="Password" type="password" class="form-control"><br>
-						<input type="submit" name="logIn" value="Log In" class="btn btn-primary">
-						<input
-							type="button"
-							onclick="window.location='<?php echo $loginURL ?>';"
-							value="Log In With Facebook"
-							class="btn btn-primary"
-						>
+						<input type="submit" name="logIn" value="Sign In" class="btn btn-primary">
+						<a class="btn btn-social btn-facebook" onclick="window.location='<?php echo $loginURL ?>';">
+							<span class="fa fa-facebook"></span> Sign in with Facebook
+						</a>
+						<a class="btn btn-social btn-google" onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-google']);">
+							<span class="fa fa-google"></span> Sign in with Google
+						</a>
 					</form>
 				</div>
 			</div>
