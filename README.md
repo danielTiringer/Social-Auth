@@ -11,3 +11,4 @@ Playing around with authentication.
 *   Use different programming languages to achieve a similar result
 
 ### Resources
+*   [Cool Social Media buttons with Bootstrap and Font Awesome](https://lipis.github.io/bootstrap-social/)
