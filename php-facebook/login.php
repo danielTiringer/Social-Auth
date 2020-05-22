@@ -1,10 +1,16 @@
 <?php
 	require_once 'config.php';
 
-	$redirectURL = 'http://localhost:8080/fb-callback.php';
+	if (isset($_SESSION['access_token'])) {
+		header('Location: index.php');
+		exit();
+	}
+
+	$redirectURL = 'http://localhost/fb-callback.php';
 	$permissions = ['email'];
 	$loginURL = $helper->getLoginURL($redirectURL, $permissions);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -29,9 +35,9 @@
 						<input type="submit" value="Log In" class="btn btn-primary">
 						<input
 							type="button"
+							onclick="window.location='<?php echo $loginURL ?>';"
 							value="Log In With Facebook"
 							class="btn btn-primary"
-							onclick="window.location = '<?php echo $loginURL ?>';"
 						>
 					</form>
 				</div>
