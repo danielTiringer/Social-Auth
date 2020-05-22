@@ -2,12 +2,11 @@
 
 ## Description
 
-Playing around with authentication.
+Playing around with authentication, implement Facebook Google and Github login, add regular login and registration with databases as an option.
 
-# Challenges and features
+# Challenges
 
-*   Implement Facebook and Google login
-*   Add regular login and registration with databases into the mix
+*   Use different methods in php (mysqli, curl, SDK libraries)
 *   Use different programming languages to achieve a similar result
 
 ### Resources
