@@ -1,9 +1,16 @@
 <?php
 	if (isset($_POST['register'])) {
-		$firstName = $_POST['firstName'];
-		$lastName = $_POST['lastName'];
-		$email = $_POST['email'];
-		$password = $_POST['password'];
+		$connection = new mysqli('mysql', 'root', 'password', 'phpAuth');
+
+		$firstName = $connection->real_escape_string($_POST['firstName']);
+		$lastName = $connection->real_escape_string($_POST['lastName']);
+		$email = $connection->real_escape_string($_POST['email']);
+		$password = $connection->real_escape_string($_POST['password']);
+
+		$data = $connection->query("INSERT INTO users (firstName, lastName, email, password) VALUES ('$firstName', '$lastName', '$email', '$password')");
+
+		if ($data === false) echo $connection->error;
+		else echo 'The new user has been saved.';
 	}
 ?>
 
