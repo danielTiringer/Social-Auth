@@ -28,10 +28,10 @@
 		$result = mysqli_fetch_array($data);
 
 		if ($data->num_rows > 0) {
-			$_SESSION['userData']['email'] = $email;
-			$_SESSION['userData']['id'] = $result['id'];
-			$_SESSION['userData']['first_name'] = $result['firstName'];
-			$_SESSION['userData']['last_name'] = $result['lastName'];
+			$_SESSION['email'] = $email;
+			$_SESSION['id'] = $result['id'];
+			$_SESSION['first_name'] = $result['firstName'];
+			$_SESSION['last_name'] = $result['lastName'];
 			$_SESSION['loggedIn'] = 1;
 
 			header('Location: index.php');

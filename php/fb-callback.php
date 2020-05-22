@@ -22,9 +22,13 @@
 	$response = $FB->get('/me?fields=id,first_name,last_name,email,picture.type(large)', $accessToken);
 	$userData = $response->getGraphNode()->asArray();
 
-	$userData = $response->getGraphNode()->asArray();
-	$_SESSION['userData'] = $userData;
+	$_SESSION['id'] = $userData['id'];
+	$_SESSION['first_name'] = $userData['first_name'];
+	$_SESSION['last_name'] = $userData['last_name'];
+	$_SESSION['email'] = $userData['email'];
+	$_SESSION['picture'] = $userData['picture']['url'];
 	$_SESSION['access_token'] = (string) $accessToken;
+
 	header('Location: index.php');
 	exit();
 ?>
