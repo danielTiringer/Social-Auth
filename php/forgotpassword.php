@@ -11,7 +11,11 @@
 			$randomString = substr($randomString, 0, 10);
 			$resetUrl = "http://localhost/resetpassword.php?token=$randomString&email=$emailAddress";
 
-			mail($emailAddress, 'Reset Password', "To reset your password, please visit this link: $resetUrl", 'From: noreply@example.com\r\n');
+			mail($emailAddress, 'Reset Password', "To reset your password, please visit this link: $resetUrl");//, 'From: noreply@example.com\r\n');
+
+			$connection->query("UPDATE users SET token='$randomString' WHERE email='$emailAddress'");
+
+			echo 'Please check your mailbox.';
 		} else {
 			echo "The provided email address wasn't found.";
 		}
