@@ -1,4 +1,4 @@
 vendor/
-Facebook/
+node_modules/
 *.swp
 *.env
