@@ -2,7 +2,7 @@
 
 ## Description
 
-Playing around with authentication, implement Facebook Google and Github login, add regular login and registration with databases as an option.
+Playing around with authentication, implement Facebook, Google and Github login, add regular login and registration with databases as an option.
 
 # Challenges
 
