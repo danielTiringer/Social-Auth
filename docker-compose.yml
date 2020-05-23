@@ -51,7 +51,7 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - social-auth-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     networks:
       - social-auth
 
@@ -81,7 +81,6 @@ services:
     networks:
       - social-auth
 
-
   node:
     container_name: social-node
     build:
@@ -98,7 +97,8 @@ services:
       - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
-    command: ./scripts/wait-for.sh library-database:27017 -- /home/node/app/node_modules/.bin/nodemon server.js
+    # command: ./scripts/wait-for.sh library-database:${MONGO_PORT} -- /home/node/app/node_modules/.bin/nodemon app.js
+    command: /home/node/app/node_modules/.bin/nodemon app.js
     links:
       - mongodb
     depends_on:
@@ -131,5 +131,5 @@ networks:
   social-auth:
 
 volumes:
-  social-auth-data:
+  mysql-data:
   mongo-data:

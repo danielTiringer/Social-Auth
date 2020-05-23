@@ -17,4 +17,4 @@ COPY --chown=node:node . .
 ENV PORT $ENV_PORT
 EXPOSE $ENV_PORT
 
-CMD [ "node", "app.js" ]
+# CMD [ "node", "app.js" ]
