@@ -1,7 +1,7 @@
 const express = require('express');
 const authRoutes = require('./routes/auth-routes');
 const passportSetup = require('./config/passport-setup');
-const mongoose = require('mongoose');
+const db = require('./config/database');
 const dotenv = require('dotenv');
 const PORT = 8080;
 
@@ -17,10 +17,10 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
-mongoose.connect(process.env.MONGO_URI, () => {
-    console.log(`Connected to MongoDB.`);
-})
-
-app.listen(PORT, () => {
-    console.log(`Server listening to requests on port ${PORT}.`);
-})
+db.connect()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server listening to requests on port ${PORT}.`);
+            console.log('MongoDB connected.');
+        })
+    })
