@@ -1,5 +1,6 @@
 const express = require('express');
 const authRoutes = require('./routes/auth-routes');
+const profileRoutes = require('./routes/profile-routes');
 const passportSetup = require('./config/passport-setup');
 const db = require('./config/database');
 const dotenv = require('dotenv');
@@ -13,6 +14,7 @@ dotenv.config();
 const PORT = process.env.PORT || 8080;
 
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname));
 
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000, // in milliseconds
@@ -22,8 +24,9 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(__dirname));
+
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
 
 app.get('/', (req, res) => {
     res.render('home');
