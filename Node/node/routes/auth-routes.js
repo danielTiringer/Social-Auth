@@ -6,7 +6,8 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-    res.send('Logout in progress');
+    req.logout();
+    res.redirect('/');
 });
 
 router.get('/google', passport.authenticate('google', {
