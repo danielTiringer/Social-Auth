@@ -262,7 +262,8 @@ Devise.setup do |config|
   config.omniauth :facebook,
                   Rails.application.credentials.dig(:facebook, :facebook_client_id),
                   Rails.application.credentials.dig(:facebook, :facebook_client_secret),
-                  scope: 'public_profile, email'
+                  scope: 'public_profile, email',
+                  token_params: { parse: :json }
   config.omniauth :github,
                   Rails.application.credentials.dig(:github, :github_client_id),
                   Rails.application.credentials.dig(:github, :github_client_secret),
