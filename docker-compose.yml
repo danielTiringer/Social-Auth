@@ -97,7 +97,6 @@ services:
       - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
-    # command: ./scripts/wait-for.sh library-database:${MONGO_PORT} -- /home/node/app/node_modules/.bin/nodemon app.js
     command: /home/node/app/node_modules/.bin/nodemon app.js
     links:
       - mongodb
