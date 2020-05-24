@@ -31,7 +31,8 @@ passport.use(
                 } else {
                     new User({
                         username: profile.displayName,
-                        googleId: profile.id
+                        googleId: profile.id,
+                        thumbnail: profile._json.image.url
                     })
                         .save()
                         .then(newUser => {
