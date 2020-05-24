@@ -1,5 +1,4 @@
-ARG RUBY_VERSION
-FROM ruby:$RUBY_VERSION
+FROM ruby:2.7.1
 
 RUN apt-get update -qq
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
@@ -8,6 +7,7 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update -qq
 RUN apt-get install -y build-essential nodejs
 RUN apt-get install -y yarn
+RUN apt-get install -y vim
 
 RUN mkdir /app
 RUN mkdir /scripts
