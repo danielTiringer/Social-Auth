@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  rails:
+    container_name: Rails
+    build:
+      context: ./Rails
+      dockerfile: ../Docker/Rails-With-Yarn/Dockerfile
+    env_file: .env
+    command: bundle exec puma -C config/puma.rb
+    entrypoint: ../scripts/docker-entrypoint.sh
+    volumes:
+      - ./Rails:/app
+      - ./Docker/Scripts:/scripts
+    links:
+      - db
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+    networks:
+      - social-auth
+
+  yarn:
+    container_name: Yarn
+    build:
+      context: ./Rails
+      dockerfile: ../Docker/Yarn/Dockerfile
+    volumes:
+      - ./Rails:/app
+    networks:
+      - social-auth
+
+  db:
+    container_name: social-auth-db
+    image: postgres:12.2
+    restart: always
+    env_file: .env
+    volumes:
+      - social-auth-db:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - social-auth
+
+networks:
+  social-auth:
+volumes:
+  social-auth-db:
