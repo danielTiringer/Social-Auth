@@ -1,6 +1,9 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
 const dotenv = require('dotenv');
+
+const User = require('../models/user-model');
+
 dotenv.config();
 
 passport.use(
@@ -9,6 +12,13 @@ passport.use(
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET
     }, (accessToken, refreshToken, profile, done) => {
-
+        new User({
+            username: profile.displayName,
+            googleId: profile.id
+        })
+            .save()
+            .then(newUser => {
+                console.log(`New user created: ${newUser}`);
+            })
     })
 );
