@@ -6,6 +6,10 @@ const User = require('../models/user-model');
 
 dotenv.config();
 
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
 passport.use(
     new GoogleStrategy({
         callbackURL: '/auth/google/redirect',
@@ -16,6 +20,7 @@ passport.use(
             .then((currentUser) => {
                 if (currentUser) {
                     console.log(`The user is: ${currentUser}`);
+                    done(null, currentUser);
                 } else {
                     new User({
                         username: profile.displayName,
@@ -24,6 +29,7 @@ passport.use(
                         .save()
                         .then(newUser => {
                             console.log(`New user created: ${newUser}`);
+                            done(null ,newUser);
                         })
                         .catch(err => {
                             if (err) throw err;
