@@ -6,6 +6,8 @@ services:
     build:
       context: ./Rails
       dockerfile: ../Docker/Rails-With-Yarn/Dockerfile
+      args:
+        RUBY_VERSION: ${RUBY_VERSION}
     env_file: .env
     command: bundle exec puma -C config/puma.rb
     entrypoint: ../scripts/docker-entrypoint.sh
