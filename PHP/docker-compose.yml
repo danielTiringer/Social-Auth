@@ -81,54 +81,8 @@ services:
     networks:
       - social-auth
 
-  node:
-    container_name: social-node
-    build:
-      context: ./node
-      dockerfile: ../Docker/Node/Dockerfile
-      args:
-        NODE_VERSION: '12.16.2-alpine3.11'
-        ENV_PORT: 8080
-    restart: unless-stopped
-    env_file: .env
-    environment:
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
-      - MONGO_HOSTNAME=mongodb
-      - MONGO_PORT=$MONGO_PORT
-      - MONGO_DB=$MONGO_DB
-    command: /home/node/app/node_modules/.bin/nodemon app.js
-    links:
-      - mongodb
-    depends_on:
-      - mongodb
-    ports:
-      - '8080:8080'
-    volumes:
-      - ./Scripts:/home/node/app/scripts
-      - ./node:/home/node/app
-      - ./node/node_modules:/home/node/app/node_modules
-    networks:
-      - social-auth
-
-  mongodb:
-    container_name: social-mongodb
-    image: mongo:4.1.8-xenial
-    restart: unless-stopped
-    env_file: .env
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
-      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
-    volumes:
-      - mongo-data:/data/db
-    ports:
-      - '${MONGO_PORT}:${MONGO_PORT}'
-    networks:
-      - social-auth
-
 networks:
   social-auth:
 
 volumes:
   mysql-data:
-  mongo-data:
