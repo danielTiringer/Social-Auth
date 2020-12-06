@@ -1,0 +1,54 @@
+version: '3.7'
+
+services:
+  python:
+    container_name: Python
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile
+    command: python server.py runserver 0.0.0.0:5000
+    depends_on:
+      - mysql
+    ports:
+      - 5000:5000
+    volumes:
+      - ./flask/:/code
+    networks:
+      - python
+
+  mysql:
+    container_name: Python-MySQL
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    command: '--default-authentication-plugin=mysql_native_password'
+    ports:
+      - 3308:3306
+    volumes:
+      - python-db:/var/lib/mysql
+    networks:
+      - python
+
+  phpmyadmin:
+    container_name: Python-MyAdmin
+    image: phpmyadmin/phpmyadmin:5.0
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOSTS: mysql
+    ports:
+      - 8888:80
+    links:
+      - mysql
+    networks:
+      - python
+
+networks:
+  python:
+volumes:
+  python-db:
