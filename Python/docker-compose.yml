@@ -12,7 +12,7 @@ services:
       FLASK_ENV: development
       # FLASK_DEBUG: 1
     depends_on:
-      - mysql
+      - db
     ports:
       - 5000:5000
     volumes:
@@ -20,7 +20,7 @@ services:
     networks:
       - python
 
-  mysql:
+  db:
     container_name: Python-MySQL
     image: mysql:8.0
     restart: always
@@ -30,8 +30,10 @@ services:
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
     command: '--default-authentication-plugin=mysql_native_password'
+    security_opt:
+      - seccomp:unconfined
     ports:
-      - 3308:3306
+      - 3306:3306
     volumes:
       - python-db:/var/lib/mysql
     networks:
@@ -42,13 +44,13 @@ services:
     image: phpmyadmin/phpmyadmin:5.0
     restart: always
     depends_on:
-      - mysql
+      - db
     environment:
-      PMA_HOSTS: mysql
+      PMA_HOSTS: db
     ports:
       - 8888:80
     links:
-      - mysql
+      - db
     networks:
       - python
 

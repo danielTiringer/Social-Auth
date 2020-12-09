@@ -37,7 +37,29 @@ docker-compose run --rm python python manage.py createsuperuser
 To enter the shell:
 
 ``` bash
-docker-compose run --rm python python manage.py shell
+docker-compose run --rm python python
+```
+
+To exit the shell:
+
+``` python
+exit()
+```
+
+### Migrations
+
+If migrations are needed, enter into the command line:
+
+``` bash
+docker-compose run --rm python python
+```
+Then go to the root directory, import the required modules, and run commands:
+
+``` python
+import os
+os.chdir('/')
+from app import db, create_app
+db.create_all(app=create_app())
 ```
 
 ### If using a database, update `projectfolder/settings.py`
